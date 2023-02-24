@@ -8,6 +8,8 @@ import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Game game;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +22,18 @@ public class MainActivity extends AppCompatActivity {
         );
 
         // Set the view to our game
-        setContentView(new Game(this));
+        game = new Game(this);
+        setContentView(game);
     }
 
+    @Override
+    protected void onPause() {
+        game.pause();
+        super.onPause();
+    }
 
+    @Override
+    public void onBackPressed() {
+        // super.onBackPressed();
+    }
 }
